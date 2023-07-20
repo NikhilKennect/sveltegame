@@ -2,6 +2,7 @@
 // @ts-nocheck
 	import { confetti } from '@neoconfetti/svelte';
 	import statements from './statements';
+	import Modal from './Modal.svelte';
 
 	import './styles.css';
 	import Key from "./Key.svelte";
@@ -12,7 +13,6 @@
 	
 	$:currState = statements[index]
 
-	
 	let keyPress = false;
 	let currKey = null;
 	let currStrng = "";
@@ -21,6 +21,7 @@
 	let lap = 0;	
 	let strtTime = 0;
 	let startBool = false;
+	let hard = false;
 
 
 
@@ -114,7 +115,10 @@
 							<div class="score-lab">Score</div>
 							<div class="score-cnt">{score} Points</div>
 						</div>
-							
+						<div class="mode-cont">
+							<input type="checkbox" bind:checked={hard}  />
+							<div>Hardcore mode⚡</div>
+						</div>
 						<div>
 							<div class="score-lab">Last Lap</div>
 							<div class="score-cnt">{lap} Sec</div>
@@ -135,6 +139,7 @@
 				}}
 			/>
 		{/if}
+		<!-- <Modal/> -->
 </main>
 
 <style>
@@ -276,6 +281,13 @@ font-weight: 600;
 	font-weight: 700;
 }
 
+.mode-cont{
+	display: flex;
+	flex-direction: row;
+	font-size: 18px;	
+	gap: 8px;
+	font-weight: 600;
+}
 
 
 </style>
