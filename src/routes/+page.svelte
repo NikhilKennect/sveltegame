@@ -33,11 +33,10 @@
 			score += 100;
 			index = (index+1) % statements.length;
 			let end = new Date().getTime();
-			lap =  Math.max(lap,((end - strtTime)/1000).toFixed(0));
+			lap =  Math.min(lap,((end - strtTime)/1000).toFixed(0));
 			startBool = false;
 			return true
 		};
-		
 		return false;
 	}
 
