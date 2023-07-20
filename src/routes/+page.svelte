@@ -33,7 +33,7 @@
 			score += 100;
 			index = (index+1) % statements.length;
 			let end = new Date().getTime();
-			lap =  Math.min(lap,((end - strtTime)/1000).toFixed(0));
+			lap =  ((end - strtTime)/1000).toFixed(0);
 			startBool = false;
 			return true
 		};
@@ -86,27 +86,29 @@
 				<div class="intro-app-title">Type the following sentence</div>
 				<div class="intro-data">{currState}</div>
 			</div>
-			<input value={currStrng} disabled class="to-type-cont" placeholder="Start typing"/>
-			<div class="keyb-holder">
-				<div class="row-1" >
-						{#each keys[0] as k, i}
-						<Key key={k} pressed={k==currKey && keyPress?true:false}/>
-						{/each}
+			<div class="keyboard-cont">
+				<input value={currStrng} disabled class="to-type-cont" placeholder="Start typing"/>
+				<div class="keyb-holder">
+					<div class="row-1" >
+							{#each keys[0] as k, i}
+							<Key key={k} pressed={k==currKey && keyPress?true:false}/>
+							{/each}
+					</div>
+					<div class="row-2" >
+							{#each keys[1] as k, i}
+							<Key key={k} pressed={k==currKey && keyPress?true:false}/>
+							{/each}
+					</div>
+					<div class="row-3" >
+							{#each keys[2] as k, i}
+							<Key key={k} pressed={k==currKey && keyPress?true:false}/>
+							{/each}
+					</div>
+					<div class="row-4" >
+							<div class="space-key" class:pressed={currKey=='SPACE'}>Space</div>
+					</div>
 				</div>
-				<div class="row-2" >
-						{#each keys[1] as k, i}
-						<Key key={k} pressed={k==currKey && keyPress?true:false}/>
-						{/each}
-				</div>
-				<div class="row-3" >
-						{#each keys[2] as k, i}
-						<Key key={k} pressed={k==currKey && keyPress?true:false}/>
-						{/each}
-				</div>
-				<div class="row-4" >
-						<div class="space-key" class:pressed={currKey=='SPACE'}>Space</div>
-				</div>
-				
+			</div>
 				<div class="score-cont">
 						<div>
 							<div class="score-lab">Score</div>
@@ -114,13 +116,11 @@
 						</div>
 							
 						<div>
-							<div class="score-lab">Fastest Lap</div>
+							<div class="score-lab">Last Lap</div>
 							<div class="score-cnt">{lap} Sec</div>
 						</div>
 				</div>
 
-			</div>
-			
 			
 		</div>
 		{#if won}
@@ -275,5 +275,7 @@ font-weight: 600;
 	font-size: 26px;
 	font-weight: 700;
 }
+
+
 
 </style>
