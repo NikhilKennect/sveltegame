@@ -2,6 +2,7 @@
 export let pressed = false;
 export let key = "A"
 
+let a  = "change 1"
 
 </script>
 <div class="key-holder" class:pressed={pressed} on:pointerdown={()=>{pressed = true}}
